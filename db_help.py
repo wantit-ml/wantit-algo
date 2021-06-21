@@ -72,5 +72,6 @@ class Stack(Base):
 
 class Vacancy():
     __tablename__ = "vacancy"
+    id = Column(Integer, primary_key=True)
     stack = relationship("Stack", backref="about")
     foreign_languages = Column(ARRAY(String))
