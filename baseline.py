@@ -19,7 +19,7 @@ class Converter():
         return int(''.join(stack_code + lang_code), 2)
 
 
-class MatchHR():
+class MatchForHR():
     def __init__(self, baseline_techs: list, baseline_lanuages: list):
         self.baseline_techs = baseline_techs
         self.baseline_languages = baseline_lanuages
@@ -34,5 +34,4 @@ class MatchHR():
                 matched_users_ids.append(candidate.id)
         return matched_users_ids
 
-    
 
