@@ -69,3 +69,8 @@ class Stack(Base):
     about_id = Column(Integer, ForeignKey("about.id"))
     technology = Column(String)
     level = Column(Integer)
+
+class Vacancy():
+    __tablename__ = "vacancy"
+    stack = relationship("Stack", backref="about")
+    foreign_languages = Column(ARRAY(String))
