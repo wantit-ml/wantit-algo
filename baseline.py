@@ -3,7 +3,7 @@ from typing import Union, List
 
 
 class Converter():
-    def __init__(self, baseline_techs: list, baseline_lanuages: list):
+    def __init__(self, baseline_techs: List[str], baseline_lanuages: List[str]):
         self.baseline_techs = baseline_techs
         self.baseline_languages = baseline_lanuages
 
@@ -20,7 +20,7 @@ class Converter():
 
 
 class MatchForHR():
-    def __init__(self, baseline_techs: list, baseline_lanuages: list):
+    def __init__(self, baseline_techs: List[str], baseline_lanuages: List[str]):
         self.baseline_techs = baseline_techs
         self.baseline_languages = baseline_lanuages
         self.converter = Converter(baseline_techs, baseline_lanuages)
@@ -35,7 +35,7 @@ class MatchForHR():
         return matched_users_ids
 
 class MatchForUser():
-    def __init__(self, baseline_techs: list, baseline_lanuages: list):
+    def __init__(self, baseline_techs: List[str], baseline_lanuages: List[str]):
         self.baseline_techs = baseline_techs
         self.baseline_languages = baseline_lanuages
         self.converter = Converter(baseline_techs, baseline_lanuages)
