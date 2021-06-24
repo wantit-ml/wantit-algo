@@ -20,7 +20,7 @@ class Converter():
         self.baseline_techs = baseline_techs
         self.baseline_languages = baseline_lanuages
 
-    def convert(self, data: Union[About, Vacancy]) -> int:
+    async def convert(self, data: Union[About, Vacancy]) -> int:
         stack_code = ['0' for i in range(len(self.baseline_techs))]
         for tech_name in data.stack:
             stack_code[self.baseline_techs.index(tech_name)] = '1'
@@ -36,11 +36,12 @@ class Converter():
 
 """ 
 should be called as 
- users_for_vacancy = MatchForHR.search_users(vacancy, list_of_about_objects)
+ users_for_vacancy = await MatchForHR.search_users(vacancy, list_of_about_objects)
 """
+
 class MatchForHR():
     @classmethod
-    def search_users(cls, vacancy: Vacancy, users_list: List[About]) -> List[int]:
+    async def search_users(cls, vacancy: Vacancy, users_list: List[About]) -> List[int]:
         matched_users_ids = []
         for candidate in users_list:
             if vacancy.code & candidate.code >= vacancy.code:
@@ -48,16 +49,16 @@ class MatchForHR():
         return matched_users_ids
 
 
-
 """ 
 should be called as 
- users_for_vacancy = MatchForUser.search_users(about_object, list_of_vacancy_objects)
+ users_for_vacancy = await MatchForUser.search_users(about_object, list_of_vacancy_objects)
 """
+
 class MatchForUser():
     @classmethod
-    def search_vacances(cls, user_info: About, vacances_list: List[Vacancy]) -> List[int]:
-        matched_vacances_ids = []
-        for sample_vacancy in vacances_list:
+    async def search_vacancies(cls, user_info: About, vacancies_list: List[Vacancy]) -> List[int]:
+        matched_vacancies_ids = []
+        for sample_vacancy in vacancies_list:
             if sample_vacancy.code & user_info.code >= sample_vacancy.code:
-                matched_vacances_ids.append(sample_vacancy.id)
-        return matched_vacances_ids
+                matched_vacancies_ids.append(sample_vacancy.id)
+        return matched_vacancies_ids
