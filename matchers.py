@@ -48,6 +48,6 @@ class MatchForUser():
             else:
                 sample_vacancy_code <<= (user_info_code_len - sample_vacancy_code_len)
 
-            if sample_vacancy.code & user_info.code >= sample_vacancy.code:
+            if sample_vacancy_code & user_info_code >= sample_vacancy_code:
                 matched_vacancies_ids.append(sample_vacancy.id)
         return matched_vacancies_ids
