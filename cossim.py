@@ -27,15 +27,15 @@ class SimCosModel():
             words_vecs /= relevant
         return words_vecs.reshape(1, -1)
 
-    def rang_candidates_strings(self, request_to_fit: str, candidates: List[str], dim=200):
+    def rang_candidates_strings(self, request_to_fit: str, candidates: List[str], dim=200) -> List[str]:
         question_vec = self.text_to_vec(request_to_fit)
         candidates.sort(key=lambda candidate: -cosine_similarity(question_vec, self.text_to_vec(candidate)))
         return candidates
 
-    def rang_candidates(self, request_to_fit: Union[About, Vacancy], candidates: List[Union[About, Vacancy]], dim=200):
+    def rang_candidates(self, request_to_fit: Union[About, Vacancy], candidates: List[Union[About, Vacancy]], dim=200) -> List[int]:
         question_vec = self.text_to_vec(request_to_fit.description)
         candidates.sort(key=lambda candidate: -cosine_similarity(question_vec, self.text_to_vec(candidate.description)))
-        return candidates
+        return [candidate.id for candidate in candidates]
 
     def similarity(self, text1: str, text2: str) -> float:
         text1_vec = self.text_to_vec(text1)
