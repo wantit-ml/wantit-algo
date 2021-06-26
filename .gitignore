@@ -38,5 +38,7 @@ Thumbs.db
 
 
 # specific #
+
 .idea
 *.bin
+wv_emb_dict.txt
