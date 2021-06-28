@@ -42,3 +42,6 @@ Thumbs.db
 .idea
 *.bin
 wv_emb_dict.txt
+
+*.db
+*.db-journal
